@@ -114,7 +114,7 @@ public final class Table {
   private func calculateMaxColumnWidthIndexes(rows: [[String]]) -> [Int] {
     Array(unsafeUninitializedCapacity: rows[0].count) { columns, initializedCount in
       for row in rows {
-        let columnWidths = row.map{ $0.count }
+        let columnWidths = row.map{ $0.utf8.count }
         columns = columnWidths.enumerated().reduce(into: columns) { columns, arg1 in
           let (idx, width) = arg1
           columns[idx] = width
